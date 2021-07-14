@@ -39,7 +39,7 @@ const Cart = ({
                     SubTotal: {cart.subtotal.formatted_with_symbol}
                     <div>
                         <Button className={classes.emptyButton} size="large" type="button" variant="contained" color="secondary" onClick={handleEmptyCart}> Empty Cart</Button>
-                        <Button className={classes.checkputButton} size="large" type="button" variant="contained" color="primary">Checkout</Button>
+                        <Button className={classes.checkputButton} component={Link} to="/checkout" size="large" type="button" variant="contained" color="primary">Checkout</Button>
                     </div>
                 </Typography>
             </div>
