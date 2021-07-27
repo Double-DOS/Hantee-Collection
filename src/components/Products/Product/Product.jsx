@@ -1,8 +1,6 @@
-import { Card, CardMedia, CardContent, Typography, IconButton, CardActions, Collapse, Grow, Button } from '@material-ui/core';
-import { AddShoppingCart } from "@material-ui/icons";
+import { Card, CardMedia, CardContent, Typography, CardActions, Grow, Button } from '@material-ui/core';
 import React from 'react';
 import useStyles from './styles';
-import Link from '@material-ui/core/Link';
 import { useHistory } from 'react-router';
 
 

@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { commerce } from './lib/commerce';
-import { Products, NavBar, Cart, Checkout, Header, Landing, ProductDetail } from './components';
+import { Products, Cart, Checkout, Header, Landing, ProductDetail } from './components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import useWindowPosition from './hooks/useWindowPosition';
 import '@fontsource/roboto';
 // importing paper and container from core
-import { Paper, Container } from "@material-ui/core";
 
 // these are for customizing the theme
 import { ThemeProvider, createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles";
 /* material shell also provide the colors we can import them like these */
-import { red } from "@material-ui/core/colors";
 
 let theme = createMuiTheme({
     palette: {

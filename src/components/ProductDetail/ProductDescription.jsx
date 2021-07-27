@@ -1,7 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Divider, Grid, Paper, Typography } from '@material-ui/core';
-import { AddShoppingCart, ImageRounded } from '@material-ui/icons'
+import { AddShoppingCart } from '@material-ui/icons'
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
@@ -9,7 +9,6 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Avatar from '@material-ui/core/Avatar';
 
 const useStyles = makeStyles((theme) => ({
     description: {
@@ -60,7 +59,6 @@ const ProductDescription = ({ product, onAddToCart, handleUpdateCartQty, handleA
         setOpen(false);
     };
 
-    var variantOption;
 
     return (
 

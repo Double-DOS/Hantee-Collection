@@ -1,12 +1,12 @@
 import React from "react"
-import { AppBar, Toolbar, Typography, useMediaQuery, MenuItem, Badge, ListItemIcon, IconButton } from "@material-ui/core"
+import { AppBar, Toolbar, Typography, useMediaQuery, MenuItem, Badge, IconButton } from "@material-ui/core"
 import * as mCore from "@material-ui/core"
 import logo from '../../assets/hantee_logo.png';
 import { useTheme } from "@material-ui/core/styles";
 import useStyles from './styles';
 import { Link, useLocation } from 'react-router-dom';
 
-import { Home, ShoppingCart, MenuOpen, Menu } from "@material-ui/icons/";
+import { ShoppingCart, Menu } from "@material-ui/icons/";
 
 const Header = ({ cartItemCount }) => {
     /* Creating 2 variables for opening and closing the menu for mobile version */

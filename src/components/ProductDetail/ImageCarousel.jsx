@@ -5,56 +5,6 @@ import { ArrowForwardIos, ArrowBackIos } from '@material-ui/icons'
 import { IconButton, Paper } from '@material-ui/core';
 import { useState } from 'react';
 
-const useStyles = makeStyles((theme) => ({
-
-    carousel: {
-        flex: "50%",
-        height: "100vh",
-
-        // backgroundColor: "black"
-
-    },
-    carouselInner: {
-        height: "100%",
-        width: "100%",
-        [theme.breakpoints.down('xs')]: {
-            height: "30vh"
-        },
-        display: "flex",
-        backgroundImage: 'url(https://source.unsplash.com/random)',
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center"
-    },
-    left: {
-        flex: "10%",
-        height: "100%",
-        color: "red",
-        backgroundColor: "rbga(0,0,0,.3)",
-        display: "grid",
-        placeItems: "center"
-
-    },
-    center: {
-        flex: "80%",
-        height: "100%",
-        margin: "auto"
-
-    },
-    right: {
-        flex: "10%",
-        height: "100%",
-        backgroundColor: "rbga(0,0,0,.6)",
-        color: "red",
-        display: "grid",
-        placeItems: "center"
-
-
-    },
-
-}))
-
-
 const ImageCarousel = ({ product }) => {
     const [currImg, setCurrImg] = useState(0)
     let images = product.assets;
