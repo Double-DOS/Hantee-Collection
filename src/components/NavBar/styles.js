@@ -2,7 +2,6 @@ import { makeStyles, fade } from '@material-ui/core/styles';
 const drawerWidth = 0;
 export default makeStyles((theme) => ({
     appBar: {
-        boxShadow: 'none',
         borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
         [theme.breakpoints.up('sm')]: {
             width: `calc(100% - ${drawerWidth}px)`,
@@ -25,7 +24,9 @@ export default makeStyles((theme) => ({
         },
     },
     grow: {
-        flexGrow: 0,
+        textDecoration: 'none',
+        // marginRight: 'auto',
+        marginLeft: '10px'
     },
     search: {
         position: 'relative',

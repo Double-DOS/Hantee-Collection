@@ -8,7 +8,8 @@ const Review = ({ checkoutToken }) => {
             <List disablePadding>
                 {checkoutToken.live.line_items.map((product) => (
                     <ListItem style={{ padding: '10px 0' }} key={product.id}>
-                        <ListItemText primary={product.name} secondary={`Quantity: ${product.quantity}`} />
+                        {product.selected_options.length === 0 ? (<ListItemText primary={product.name} secondary={`Quantity: ${product.quantity}`} />) : (<ListItemText primary={`${product.selected_options[0].group_name} ${product.selected_options[0].option_name} of ${product.name}`} secondary={`Quantity: ${product.quantity}`} />)}
+
                         <Typography variant="body2">{product.line_total_formatted_with_symbol}</Typography>
                     </ListItem>
                 ))}

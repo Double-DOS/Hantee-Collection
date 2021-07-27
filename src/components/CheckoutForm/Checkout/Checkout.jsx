@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Paper, Stepper, Step, StepLabel, Typography, CircularProgress, Divider, Button } from '@material-ui/core'
+import { Link } from 'react-router-dom'
 
 import useStyles from './styles';
 import { commerce } from '../../../lib/commerce';
@@ -13,6 +14,8 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
     const [shippingData, setShippingData] = useState({});
     const classes = useStyles();
 
+    console.log(order);
+
 
 
     const Form = () => activeStep === 0
@@ -25,11 +28,26 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
             next={nextStep}
         />;
 
-    const Confirmation = () => (
-        <div>
-            Confirm
+    let Confirmation = () => order.customer ? (
+        <>
+            <div>
+                <Typography variant="h5">
+                    Thank you for your purchase, {order.customer.firstname} {order.customer.lastname}
+                </Typography>
+                <Divider className={classes.divider} />
+                <Typography variant="subtitle1">
+                    Order Ref: {order.customer_reference}
+                </Typography>
+            </div>
+            <br />
+            <Button component={Link} to="/" variant="outlined" type="button">Back To Home</Button>
+        </>
+    ) : (
+        <div className={classes.spinner}>
+            <CircularProgress />
         </div>
-    )
+
+    );
 
 
     useEffect(() => {
@@ -44,6 +62,14 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
         }
         generateToken();
     }, []);
+
+    if (error) {
+        <>
+            <Typography variant="h5">Error: {error}</Typography>
+            <br />
+            <Button component={Link} to="/">Back To Home</Button>
+        </>
+    }
 
     const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1);
     const backStep = () => setActiveStep((prevActiveStep) => prevActiveStep - 1);

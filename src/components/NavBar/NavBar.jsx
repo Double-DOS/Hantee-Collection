@@ -16,13 +16,15 @@ const NavBar = ({ cartItemCount }) => {
                         <img src={logo} alt="HanTee Collections" height="25px" className={classes.image} />
                         HanTee Collections
                     </Typography>
+                    <Typography component={Link} to="/" variant="h6" color="inherit" className={classes.title}>
+                        About
+                    </Typography>
                     <div className={classes.grow}>
                         {location.pathname === '/' && (
                             <div className={classes.button}>
                                 <IconButton component={Link} to="/cart" aria-label="Show cart items" color="inherit">
                                     <Badge badgeContent={cartItemCount} color="secondary">
                                         <ShoppingCart />
-
                                     </Badge>
                                 </IconButton>
 
@@ -36,5 +38,7 @@ const NavBar = ({ cartItemCount }) => {
         </>
     )
 }
+
+
 
 export default NavBar

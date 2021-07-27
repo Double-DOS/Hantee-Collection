@@ -22,8 +22,8 @@ const PaymentForm = ({ checkoutToken, back, shippingData, onCaptureCheckout, nex
             const orderData = {
                 line_items: checkoutToken.live.line_items,
                 customer: {
-                    firstName: shippingData.firstName,
-                    lastName: shippingData.lastName,
+                    firstname: shippingData.firstName,
+                    lastname: shippingData.lastName,
                     email: shippingData.email
                 },
                 shipping: {
@@ -33,14 +33,14 @@ const PaymentForm = ({ checkoutToken, back, shippingData, onCaptureCheckout, nex
                     county_state: shippingData.shippingSuDivision,
                     postal_zip_code: shippingData.zip,
                     country: shippingData.shippingCountry,
-                    fufillment: {
-                        shipping_method: shippingData.shippingOption
-                    },
-                    payment: {
-                        gateway: 'stripe',
-                        stripe: {
-                            payment_method_id: paymentMethod.id
-                        }
+                },
+                fulfillment: {
+                    shipping_method: shippingData.shippingOption
+                },
+                payment: {
+                    gateway: 'stripe',
+                    stripe: {
+                        payment_method_id: paymentMethod.id
                     }
                 }
             };
