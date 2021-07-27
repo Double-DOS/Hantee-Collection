@@ -61,7 +61,7 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
             }
         }
         generateToken();
-    }, []);
+    }, [cart.id]);
 
     if (error) {
         <>
