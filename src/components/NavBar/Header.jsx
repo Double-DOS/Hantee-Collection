@@ -67,12 +67,33 @@ const Header = ({ cartItemCount }) => {
 
                             </IconButton>
                         </MenuItem>
+                        <MenuItem
+                            onClick={() => setAnchor(null)}
+                        >
+                            <Typography className={classes.grow} component={Link} to="/products" variant="button" color="inherit">
+                                Products
+                            </Typography>
+                        </MenuItem>
+                        <MenuItem
+                            onClick={() => setAnchor(null)}
+                        >
+                            <Typography className={classes.grow} component={Link} to="/for-men" variant="button" color="inherit">
+                                For Men
+                            </Typography>
+                        </MenuItem>
+                        <MenuItem
+                            onClick={() => setAnchor(null)}
+                        >
+                            <Typography className={classes.grow} component={Link} to="/for-women" variant="button" color="inherit">
+                                For Women
+                            </Typography>
+                        </MenuItem>
                     </mCore.Menu>
                 </>) : (
                     <>
 
                         <Typography className={classes.grow} component={Link} to="/products" variant="button" color="inherit">
-                            About
+                            Products
                         </Typography>
                         <Typography className={classes.grow} component={Link} to="/for-men" variant="button" color="inherit">
                             For Men
