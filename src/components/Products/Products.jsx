@@ -13,7 +13,7 @@ const Products = ({ products, checked, setProductDetail }) => {
         <main className={classes.content}>
 
 
-            {location !== "/" && <Typography variant="h4" align="center" color="textPrimary" gutterBottom>
+            {location.pathname === "/" && <Typography variant="h4" align="center" color="textPrimary" gutterBottom>
                 CHECK OUT OUR NEW ARRIVALS
             </Typography>}
             <Grid container spacing={4}>
