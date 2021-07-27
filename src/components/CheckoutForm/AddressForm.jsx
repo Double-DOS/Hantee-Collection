@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { InputLabel, Select, MenuItem, Button, Grid, Typography, TextField } from '@material-ui/core';
 import { Link } from "react-router-dom";
-import { useForm, FormProvider } from 'react-hook-form'
 import * as yup from 'yup';
 import { useFormik } from 'formik';
-import TextInput from './CustomTextField';
 import { commerce } from '../../lib/commerce';
 
 
@@ -46,11 +44,8 @@ const AddressForm = ({ checkoutToken, next }) => {
 
 
     const [shippingCountries, setShippingCountries] = useState([]);
-    const [shippingCountry, setShippingCountry] = useState('');
     const [shippingSubDivisions, setShippingSubDivisions] = useState([]);
-    const [shippingSubDivision, setShippingSubDivision] = useState('');
     const [shippingOptions, setShippingOptions] = useState([]);
-    const [shippingOption, setShippingOption] = useState('');
 
 
     const formik = useFormik({
@@ -76,43 +71,46 @@ const AddressForm = ({ checkoutToken, next }) => {
 
 
 
-    const fetchShippingCountries = async (checkoutTokenId) => {
-        const { countries } = await commerce.services.localeListShippingCountries(checkoutTokenId);
 
-        setShippingCountries(countries);
-        formik.values.shippingCountry = Object.keys(countries)[0];
-        // setShippingCountry(Object.keys(countries)[0]);
-    };
 
-    const fetchSubDivisions = async (countryCode) => {
-        const { subdivisions } = await commerce.services.localeListSubdivisions(countryCode);
-        console.log('hereer');
-        setShippingSubDivisions(subdivisions);
-        formik.values.shippingSubDivision = Object.keys(subdivisions)[0];
 
-        // setShippingSubDivision(Object.keys(subdivisions)[0]);
-    };
 
-    const fetchShippingOptions = async (checkoutTokenId, country, stateProvince) => {
-        const options = await commerce.checkout.getShippingOptions(checkoutTokenId, { country, region: stateProvince });
-        console.log('Console ====> ', options);
-        setShippingOptions(options);
-        formik.values.shippingOption = options[0].id;
 
-        // setShippingOption(options[0].id);
-    };
 
     useEffect(() => {
+        const fetchShippingCountries = async (checkoutTokenId) => {
+            const { countries } = await commerce.services.localeListShippingCountries(checkoutTokenId);
+
+            setShippingCountries(countries);
+            formik.values.shippingCountry = Object.keys(countries)[0];
+            // setShippingCountry(Object.keys(countries)[0]);
+        };
         fetchShippingCountries(checkoutToken.id);
-    }, [checkoutToken]);
+    }, [checkoutToken, formik.values]);
 
     useEffect(() => {
+        const fetchSubDivisions = async (countryCode) => {
+            const { subdivisions } = await commerce.services.localeListSubdivisions(countryCode);
+            console.log('hereer');
+            setShippingSubDivisions(subdivisions);
+            formik.values.shippingSubDivision = Object.keys(subdivisions)[0];
+
+            // setShippingSubDivision(Object.keys(subdivisions)[0]);
+        };
         if (formik.values.shippingCountry !== '') fetchSubDivisions(formik.values.shippingCountry);
-    }, [formik.values.shippingCountry]);
+    }, [formik.values]);
 
     useEffect(() => {
+        const fetchShippingOptions = async (checkoutTokenId, country, stateProvince) => {
+            const options = await commerce.checkout.getShippingOptions(checkoutTokenId, { country, region: stateProvince });
+            console.log('Console ====> ', options);
+            setShippingOptions(options);
+            formik.values.shippingOption = options[0].id;
+
+            // setShippingOption(options[0].id);
+        };
         if (formik.values.shippingSubDivision !== '') fetchShippingOptions(checkoutToken.id, formik.values.shippingCountry, formik.values.shippingSubDivision);
-    }, [formik.values.shippingSubDivision, checkoutToken, formik.values.shippingCountry]);
+    }, [formik.values, checkoutToken]);
 
     return (
         <>

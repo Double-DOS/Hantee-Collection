@@ -2,7 +2,7 @@ import React from 'react'
 
 import { makeStyles } from '@material-ui/core/styles';
 import { ArrowForwardIos, ArrowBackIos } from '@material-ui/icons'
-import { IconButton, Paper } from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
 import { useState } from 'react';
 
 const ImageCarousel = ({ product }) => {
